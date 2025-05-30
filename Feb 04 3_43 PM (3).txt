@@ -3,3 +3,4 @@ What Traditional computing is ?
 EBS encryption
 AMI - OS + custom  ( Public , Private )
 Collection of OS + Software and any configuration / custom settings on the software.
+hi pavan
