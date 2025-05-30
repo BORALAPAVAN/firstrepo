@@ -1,0 +1,715 @@
+ssh -i "Myfirstkeypair.pem" ec2-user@ec2-34-229-87-254.compute-1.amazonaws.com
+What Traditional computing is ? 
+                                Purchase and use the basic resources (CapeX + Opex)Servers, cooling , area 
+								team to handel servers
+								Banks wont replace easily
+What Cloud computing is ? (oPx)
+creation of resources on on demand which are remotely located in another location .Pay as you go.
+Usually startups and new age companies
+
+What is  Datacenter , VM , 
+
+AWS - 1st and one of the top players 
+Gartner quadrant
+https://aws.amazon.com/resources/analyst-reports/22-global-gartner-mq-cips/
+Select cloud based on the usecase 
+Azure in india -- rupees
+AWS big in US - Usually dollars
+ML and Kube - GCP
+
+
+Reliability
+
+ability to recover from failures example
+
+Scalability
+example - black friday
+
+Security 
+
+Cost effectiveness -- 
+Performance Efficiency - max use of hardware resources
+Flexibility-- Check definition in PPT
+
+
+Regions - locations where AWS DCs are present --SEE in Portal 
+https://aws.amazon.com/about-aws/global-infrastructure/
+walkthrough of region short codes .-- Needed for using in Code
+
+AZs ( Connected and physically isolated )
+Multiple AZs within a region - 3 to 6 Need for AZs - DR , HA , < 100 KM 
+connected via high speed networks cable
+
+if region goes down then what ?
+Hence multi region DR .
+
+AWS management console 
+100+ services impossible to know all
+ohio and virginia only available in simplilearn
+
+AWS free tier
+https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all
+
+
+AWS IAM 
+Authentication Authorisation .
+Allows Users to control AWS resources
+Allows AWS resources to connect and control other AWS resources
+
+eg Ec2 to S3 , Ec2 to RDS
+aws s3 ls
+
+AWS Services 
+Just idea of services . Its ok if you dont get it.
+Clasification into 4 
+
+Compute
+services providing processing power eg laptop
+
+Storage
+RAW storage eg hardrive
+
+Database
+Data in the form of row colum to query and analyse
+
+Networking 
+ Services that connect other services
+
+
+
+Day -2 
+
+
+Support plans
+https://aws.amazon.com/premiumsupport/plans/
+
+
+
+EC2 instance types ( 10 min )
+https://aws.amazon.com/ec2/instance-types/
+General purpose
+memory optimised
+accelerated computing
+storage optimised
+
+EC2 Demo Windows machine  -- Show 
+Root contains OS
+other EBS are like Hard Disk drives
+Components of instance -- Instance type - RAM , CPU etc
+
+Ec2 Linux
+ec2 instance connect
+
+
+On Demand -- launch
+
+Savings plan
+when to go for it ? what is it ?
+Term of the plan - 1 or 3
+more towards dollar value per hour
+
+Reserved instance -- fixed instances
+
+spot instances 
+Why ? =  to fill gap
+huge discounts 
+whats the catch - can go anytime if bid is higher
+what about my data - extra drive will be there . Only root goes.
+Dont use for PROd instances
+usecase -- Sale period
+
+Dedicated Hosts
+how VMs work on HW ? 
+High costs as dedicated HW and highest performance. 
+Price 2 to 3 times of ondemand  
+
+https://aws.amazon.com/architecture/icons/
+
+https://medium.com/@shrutipal700/hosting-a-website-on-windows-virtual-machine-61fd427e1ef4
+
+EBS -- Primary storage of instance 
+•	It is a Block storage attached to one VM at a time
+•	We can create and attach multiple EBS Vol to VM
+•	REMEBER EBS SHOULD BE IN SAME AZ AS EC2
+
+Concepts --
+IOPS - input output operations per second 
+            Number of read write operations on your disk / access made to disk -- DB operations
+Throughput - amount of data that you read at a time .		
+        - Big data, data warehouse
+        
+Types 
+
+https://aws.amazon.com/ebs/features/
+
+Types of EBS
+SSD ( Solid state drive)-- 
+GP2,Gp3
+Io1,I02 ,i02 Express block
+HDD ( Hard disk drive )
+St1 , sc1
+Create a Disk - demo 
+EBS encryption
+
+AMI - OS + custom  ( Public , Private )
+Collection of OS + Software and any configuration / custom settings on the software.
+eg - Apache configuration , chrome installation
+Demo - chrome installed
+Tags while creating AMI
+
+Snapshot
+
+commands
+
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+cd /var/www/html
+vi index.html
+
+"use i for insert
+and shift :wq to save"
+
+<h1>Hey der from vm1</h1>
+
+https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html
+
+Auto scaling
+
+AMI ---
+Launch template ---
+ASG ---
+
+
+Home work 
+
+learn linux 
+
+cp,cd , apache . 
+
+https://aws.amazon.com/ec2/faqs/
+
+https://aws.amazon.com/s3/
+
+AWS placement Groups
+cluster 
+partition
+spread
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+
+Hybernation
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html
+
+
+Next Week/
+
+AWS ROLES
+Interconnectivety of services why needed ? how to do ?
+IAM Roles ( connect resource to resource )
+EC2 to S3 , Ec2 to RDS ( DB )
+
+CLI
+In production they use automation using CLI , SDKs
+why and who use cli -- devops guys to control AWS resources using CMD
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+eg Ec2 to S3 , Ec2 to RDS
+aws s3 ls
+
+AWS confiure ( 10 min ) 
+AWS -- version
+AWS help
+https://docs.aws.amazon.com/cli/latest/reference
+
+commands
+
+sudo su -- become root user
+sudo mkdir efs  -- create folder
+sudo yum install -y amazon-efs-utils -- install EFS packages
+sudo mount -t efs -o tls fs-0a3f9cb6082ed8efd:/ efs -- mount
+cd /efs 
+touch filenam.txt
+
+EFS , FSX
+
+
+
+What is a loadbalancer 
+Benefits of Load balancer
+
+•	Distribute requests across multiple healthy resources
+• Avoid sigle point of failure 
+•	Uses Health checks
+•	Within a region
+Application load balancer
+Layer 7 , URI based request , based on HTTP , HTTPS
+https://en.wikipedia.org/wiki/OSI_model
+ecommerece , Social media ,
+Target group
+Health checks
+
+Network Loadbalancer
+•	For high performance , Gaming , millions of connections
+•	Layer 4 , TCP , UDP protocol
+•	Static IP address
+
+Classic - discontinued
+
+Gateway Loadbalancer 
+
+Connect to Virtual appliances Next gen firewalls , WAF etc
+
+https://en.wikipedia.org/wiki/OSI_model
+
+Load balancer steps
+
+Select LB SG  -- 
+Target Group -- Ec2s , ip address , loadbalancer
+Health checks -- to monitor health of our VMs
+Load balancing rules -- RR , LC 
+listners  -- Port ( 80 , 443) ( HTTP , HTTPS)
+
+
+a Create EC2 , install apache and take AMI
+b Launch template
+c Auto scaling  groups
+
+1 Creation of ASG tracking policy -- ( 10 % ,50 % , 70 % , 80 %) , select the AZ , subnets
+2 Min , Max , Desired capacity
+3 Load balancer -- ( TG  and Attach it to ASG )
+4 ASG will automatically add and remove VMs from the LB ( TG )
+
+ASG --- Automation to add and remove instances
+TG ( its collection of anything )---  LB ()
+
+
+increase or descrease in cpu utilisation will add or delete resources
+
+
+Stop instances in LB and show
+
+https://aws.amazon.com/s3/
+https://aws.amazon.com/s3/storage-classes/
+
+Types of cost
+Storage cost - 1MB , 1 GB
+duration -- how long 
+cost for download -- 
+data upload or inside is free 
+
+Standard  -- download cost - 1 $ 1 R
+
+Standard IA  - 
+cost for retrival
+
+galcier -- storge costs is less - 10 cents , 20paisa -- ( archival )
+cost for retrival --
+download cost
+
+SRR
+CRR
+
+
+S3 is a global object based storage service -- ( google drive , one drive etc)
+data is store regionally
+
+bucket --- Buckets are locations where we store data S3.
+objects -- .txt , images , viedos , .xml ,
+
+
+Why to use S3 ?
+
+Automation - has huge scope to use automation apis
+granular control who has access to what
+integration with other AWS services
+shared storagw
+
+No storage limit
+
+object URL -- Bucket name + key
+
+Block all -- enable
+enable ACL
+make public
+
+Ways to upload
+portal , CLI
+S3 APIs
+
+S3 Introduction - Durability, Consistency, Usage, Object Ownership  
+S3 Storage Classes
+Versioning
+Lab - Versioning
+Lifecycle Management
+Replication (CRR, SRR
+
+Next class 
+
+18th FEB
+
+
+Static website , dynamic website
+
+quesion 
+
+where can we host dynamic websites .
+
+Ec2 -- Dynamic , static
+S3 - static
+
+18th FEB
+
+S3 static website hosting --  https://www.free-css.com/free-css-templates/page288/meetup
+
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+S3 using IAM
+S3 cli 
+
+aws --version
+aws configure
+S3 commands
+aws sts get-caller-identity
+aws s3 mb s3://aws-vish-sl-test
+aws s3 cp test.jpg s3://aws-vish-sl-test
+aws s3 ls s3://aws-vish-sl-test
+aws s3 cp s3://aws-vish-sl-test/test.jpg spidey.jpg
+aws s3 rm s3://aws-vish-sl-test/test.jpg
+aws s3 rb s3://aws-vish-sl-test
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html#using-s3-commands-managing-objects-copy
+
+
+S3 acceleration
+
+portal -- >> aws cli --> AWS tranfer acceleration  --> https://aws.amazon.com/snow/
+
+MFA 
+Performance and Storage Gateway
+
+Server side Encryption
+Amazon S3-managed keys (SSE-S3) - encryption managed by aws s3 
+AWS Key Management Service key (SSE-KMS)  --  encryption managed by aws KMS 
+
+
+Client side
+using own keys - 
+
+Encryption (SSE-S3, SSE-KMS, SSE-C, Client Side)
+Lab - Server Side Encryption (SSE-S3, SSE-KMS)
+
+https://calculator.aws/#/addService
+
+Class A: 10.0.0.0 to 10.255.255.255.
+Class B: 172.16. 0.0 to 172.31. 255.255.
+Class C: 192.168. 0.0 to 192.168. 255.255.
+
+VPC -- networking
+Virtula private 
+
+16 to 32 
+
+10 . 0 . 0 . 0 
+
+2^(30-32)
+2^2 = 4 
+
+Create VPC 
+Create Subnets - public and private
+Create Route tables - Public and Private
+Attach / associate RT to Subnets
+Create IGW , Attach to VPC
+In public RT add IGW route to internet 0.0.0.0/0
+
+easy way use that VPC tool
+Route Table
+
+19th FEB
+
+Security groups
+
+NACL
+
+VPC peering
+
+
+A   --- ip to name mapping
+
+www.   vishal.      com
+Sub  Domain name   top level domain
+		   root domain 
+
+VPN , Direct connect 
+
+S3 + R53 --- Done  
+Route 53 + ACM ( LOCK ) + LoadBalancer + Ec2 
+Steps
+
+Purchase domain from provider - ( Godaddy, hostinger )
+Create Hosted ZOne in R53
+Create a Loadbalancer and add VMs to the Target Group
+Create an A record in R53 by selecting Alias and then adding loadbalancer 
+
+
+Bastion host
+Endpoints
+
+
+
+RDS , database 
+
+DB -- store data in a certain format and analyse from it
+
+Relational -- structred in nature means it has fixed format and we have to honour that
+It in form of rows and columns
+financial companies
+
+
+
+Nonrelational/ NO SQL -- A non-relational database stores data in a non-tabular form, 
+and tends to be more flexible than the traditional, SQL-based, relational database structures.
+
+https://aws.amazon.com/products/databases/
+https://db-engines.com/en/ranking
+
+Relational Database Service RDS 
+Managed service - Hardware , S/W , patching , licence
+-OracleDB
+-MySQL
+-MSSQL
+-PostGRESQL
+-MariaDB
+-Aurora (Up to 5X the throughput of MySQL and 3X the throughput of PostgreSQL)
+		- MySQL ( 5 times more better )
+		-PostgreSQL (3 times more
+
+
+https://aws.amazon.com/blogs/architecture/disaster-recovery-dr-architecture-on-aws-part-i-strategies-for-recovery-in-the-cloud/
+ 
+ 
+ NAT gateway
+ Bastion Host
+ Endpoint
+ 
+CloudFront --CDN 
+
+Problem -- single server distribution 
+eg see white board - user who is present in india accessing anything in US how to reduce latency  ?
+CDN
+Which OTT platform work best 
+Youtube and netflix . why because of CDN 
+What is CDN - caching content closer to end user using geographically located servers
+It caches static content
+
+simple reduce distance between user and data
+Can be done using Edge locations (Edge locations - collection of servers ). caching data closer to end user.
+Regional Edge cache 
+
+Amazon Aurora
+-Aurora (Up to 5X the throughput of MySQL and 3X the throughput of PostgreSQL)
+		- MySQL ( 5 times more better )
+		-PostgreSQL (3 times more
+    
+    Reader endpoint 
+    Writer Endpoint 
+    serverless
+    https://aws.amazon.com/rds/aurora/features/
+    supports global database feature
+    
+https://aws.amazon.com/rds/aurora/pricing/
+ 
+ 
+ Amazon Redshift --- Big data , data ware housing
+ 
+ huge amount of unstructured data and try to get some meaning full output out of it .
+ 
+ charts , bar graphs , reports etc  ( powebi , tableau )
+ 
+ IAC -- Infra structure as a Code
+ Terraform 
+ 
+ https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sample-templates-services-us-west-2.html#w2ab1c35c58c13c17
+ 
+ 
+
+IAM - Users , Groups , Roles , Policies
+
+I - Identity
+A - Acess  - authentication
+M - Management  - authorisation
+MFA 
+
+
+
+users
+groups
+role
+Policy - components
+
+  Statement -- can have multiple ststements , arrays
+  effect -- allow or deny 
+  action -- 
+  resource- -- ARN
+  
+  Policies types: -
+  
+  identity based policy -- Attaches to IAM resource like role , user , usergroup
+  Resource based - attaches to resource like s3 , sqs , sns 
+  
+  AWS policy generator - https://awspolicygen.s3.amazonaws.com/policygen.html
+
+WAF -- completd 
+
+Amazon DynamoDB
+lambda
+
+serverless
+pay as you go
+HA ,scalable 
+code supported in aws lambda is ? 
+15 minutes
+128 MB to 10 GB
+
+https://aws.amazon.com/sdk-for-python/
+
+import json
+import boto3
+
+def lambda_handler(event, context):
+    # TODO implement
+    client_dynamo=boto3.resource('dynamodb')
+    table=client_dynamo.Table('property')
+    try:
+        response=table.put_item(Item=event)
+        return "Done"
+    except:
+        raise
+
+
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateWebServer.html
+
+Security services in AWS 
+Guard duty , Config , security hub , macie 
+
+Clodwatch 
+
+Custom cloudwatch metrics -- RAM , DISK space ,
+https://docs.aws.amazon.com/managedservices/latest/userguide/custom-cloudwatch-events.html
+https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-push-custom-metrics/
+
+sns ,  projects 
+
+
+Serverless 
+sqs , containers , practice questions
+
+Carrier discussion 
+
+one freshers  -- get into industry , certification - 2 to 3 months - 6 months
+carrer change
+
+AWS  
+
+AWS + Linux  , Azure + windows + Linux
+AWS + Python
+AWS + Terraform 
+
+AWS -- CI/CD pipelines - jenkins
+       Docker , Kubernates , Ansible
+       
+       Basics -- Linux , shell/Python , Networking , database 
+
+Startups ---
+
+experienced ( only certification )---  10 , 5 years , already working on aws
+AWS FAQs, AWS portal hands ,  or uptil 3 months , aws SAA github , search -- AWS SAA medium blogs ,
+practice question. 
+AWS -- recommends , 13 k 
+
+Admins / cloud support engineer- freshrs till 8 years - AWS sysops , SAA , 
+Devops engineer --
+
+Architect roles  --- hands on architecting
+
+Presales --- 8 + , talk to customers , diagrams , convert 
+
+Sales ----  getting into this easy 
+	 
+   
+https://aws.amazon.com/certification/certified-solutions-architect-associate/
+
+Trouble shooting
+https://youtube.com/playlist?list=PLhr1KZpdzukfdjsOHZ-BazZt1iK1J8UUw
+
+Whats my Arch
+https://youtube.com/playlist?list=PLhr1KZpdzukdeX8mQ2qO73bg6UKQHYsHb
+
+Advance - Use case behin service
+https://aws.amazon.com/whitepapers/
+
+Sample practice
+https://medium.com/javarevisited/6-best-courses-for-aws-certified-solution-architect-professional-exam-in-2020-df5850a9279a
+
+** Exam topics **
+Search AWS SAA practice tests in YT
+
+AWS FAQ
+
+Ec2, VPC , RDS ,S3 , R53 , lB , ASG , Cloudwatch ,
+WAF , Security hub , COnfig
+
+Pathway to become CLoud Engineer and devops  , SRE 
+How to get into cloud
+
+Step - 1 basic
+Cloud basics
+Linux, Windows
+Networking 
+
+Cloud -- AWS, Azure , GCP
+IAC - Terraform , Cloudformation ( YAML )
+
+Container -
+Kubernates
+
+Automation -- Shell , powershell , pyhton
+
+TYPES of roles
+AWS-Linux- shell -- python
+
+Azure - windows - powershell
+
+Azure - Linux
+
+AWS - terraform
+Azure - terraform
+
+MOnitering -- newrelic ,datadog , Grafana -- dashboards
+GIT
+CI/CD - AWS Code build , pipline, Azure devops , Jenkins 
+
+experience 
+1 to 3
+Aws + Terraform + CICD - jenkins / AWS code build + docker + kubernates
+
+3 to 5 to 8
+Linux admins -- AWS , sysops admin associate
+Windows admins -- AZure 
+Database admins -- Databse specility , SQL , Tableaus
+Network admins --- AWS networking specility 
+
+Security specility
+
+8 and 15 above
+Presales / Architects  -- Costing , proposals , cost explorer ,  WARs , high pay architecting , Presentation skills
+cloud sales --
+Project Management ---
+
+
+
+
+
+
+
+
